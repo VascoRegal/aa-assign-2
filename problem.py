@@ -6,8 +6,10 @@ import os
 import json
 
 class Problem:
-    def __init__(self, data_dir : str, stopwords_path : str, k: int=5, solver: str='e'):
-        self.data_stream = DataStream(data_dir, stopwords_path)
+    def __init__(self, data_path : str, stopwords_path : str, k: int=5, solver: str='e'):
+        self.data_path = data_path
+        self.stopwords_path = stopwords_path
+        self.data_stream = DataStream(data_path, stopwords_path)
         self.solution = None
         self.execution_time = 0
         self.k = k
@@ -46,6 +48,8 @@ class Problem:
                 "solver": self.solver,
                 "solution": self.solution,
                 "time": self.execution_time,
-                "k": self.k
+                "k": self.k,
+                "stopwords": self.stopwords_path,
+                "data": self.data_path
             }, f)
 

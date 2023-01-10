@@ -9,11 +9,10 @@ class DataStream:
         self.load_data(data_dir, stopwords_path)
         self.current_line = None
 
-    def load_data(self, data_dir: str, stopwords_path: str):
-        self.files = [open(os.path.join(data_dir, fname)) for fname in os.listdir(data_dir)]
+    def load_data(self, data_path: str, stopwords_path: str):
+        self.files = [open(data_path)]
         with open(stopwords_path, 'r') as s:
             self.stopwords = [line.strip() for line in s.readlines()]
-
 
     def parse_line(self, line: str):
         line = line.lower().translate(str.maketrans('','', self.punctuation))

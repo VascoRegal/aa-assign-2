@@ -6,9 +6,9 @@ SOLVERS=['e', 'm', 'p']
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = "Run letter occurence problems in text files")
 
-    parser.add_argument('data_dir',
+    parser.add_argument('data_path',
                         type=str,
-                        help='Directory of the text files')
+                        help='Path to the text file')
 
     parser.add_argument('stopwords',
                         type=str,
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     s = args.solver
     s = s.lower() if s and s in SOLVERS else 'e'
 
-    p = Problem(args.data_dir, args.stopwords, args.k, s)
+    p = Problem(args.data_path, args.stopwords, args.k, s)
     p.solve()
 
     if args.export:
